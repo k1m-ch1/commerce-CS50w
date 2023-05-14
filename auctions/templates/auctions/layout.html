@@ -21,15 +21,15 @@
                 <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'catagory' %}">Catagory</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'listing' %}">Listing</a>
+                <a class="nav-link" href="{% url 'category' 'selection' %}">Category</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'create_listing' %}">Create listing</a>
             </li>
             {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'watchlist' %}">Watchlist</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
@@ -46,4 +46,8 @@
         {% block body %}
         {% endblock %}
     </body>
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
 </html>

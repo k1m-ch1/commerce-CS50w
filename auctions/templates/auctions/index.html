@@ -1,7 +1,26 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
+    {% if classification %}
+    <h2>{{ classification }}</h2>
+    {% else %}
     <h2>Active Listings</h2>
-
-    TODO
+    {% endif %}
+    <div class="container">
+        {% for listing in listings %}
+        {% if listing.is_active or "Watchlist" in classification %}
+        <div class="listing-container">
+            <a href="{% url 'listing' listing.id %}">
+            <img src="{{listing.photo.url}}">
+            <div class="info-container">
+                <label class="name">{{listing.name}}</label>
+                <label class="owner"><strong>By:</strong> {{listing.owner}}</label>
+                <p class="description">{{listing.description}}</p>
+                <label class="price">${{listing.current_price}}</label>
+            </div>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>  
 {% endblock %}
